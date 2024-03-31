@@ -1,0 +1,51 @@
+{
+    "tasks": [
+        {
+            "id": 4,
+            "title": "Form Validation add",
+            "description": "asdgdsshgdvsdge",
+            "category": "Work",
+            "date": "2024-03-30T18:00:00.000Z",
+            "priority": "high",
+            "status": "TODO"
+        },
+        {
+            "id": 5,
+            "title": "Update",
+            "description": "ufdhdavnuoghdnvd",
+            "category": "Work",
+            "date": "2024-03-31T18:00:00.000Z",
+            "priority": "high",
+            "status": "TODO"
+        },
+        {
+            "id": 6,
+            "title": "ysfisvsa",
+            "description": "asgdhd",
+            "category": "Study",
+            "date": "2024-03-29T18:00:00.000Z",
+            "priority": "high",
+            "status": "TODO"
+        }
+    ],
+    "user": [
+        {
+            "id": 1,
+            "userName": "Sakib",
+            "email": "agag@gmail.com",
+            "password": "afasgsg"
+        },
+        {
+            "id": 2,
+            "userName": "Tanvir Alam Sakib",
+            "email": "sakib@gmail.com",
+            "password": "sakib123"
+        },
+        {
+            "id": 3,
+            "userName": "Sakib",
+            "email": "sakib@ghegn.com",
+            "password": "afueugnouew"
+        }
+    ]
+}
