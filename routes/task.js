@@ -70,19 +70,20 @@ router.delete('/:id', async (req, res, next) => {
     }
 });
 
-// router.put('/:id', async (req, res, next) => {
-//     const { id } = req.params;
-//     try {
-//         await client.connect();
-//         const database = client.db('todo_app');
-//         const taskCollection = database.collection('tasks');
-//         const query = {"_id": new ObjectId(id)};
-//         const task = await taskCollection.Notes.updateOne(query,{$set: status}, {new:'Done'});
-//         return res.status(200).json(task);
-//     } finally {
-//         // Ensures that the client will close when you finish/error
-//         await client.close();
-//     }   
-// });
+router.put('/:id', async (req, res, next) => {
+    const { id } = req.params;
+    try {
+        await client.connect();
+        const database = client.db('todo_app');
+        const taskCollection = database.collection('tasks');
+        const query = {"_id": new ObjectId(id)};
+        const update = {"status": "Done"};
+        const task = await taskCollection.updateOne(query,{$set: update});
+        const updatedTask = await taskCollection.findOne(query);
+        return res.status(200).json(updatedTask);
+    } finally {
+        await client.close();
+    }   
+});
 
 module.exports = router;
