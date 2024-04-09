@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const authMiddleware = require('../middleware/authMiddleware.js');
 
 const { MongoClient, ObjectId } = require("mongodb");
 
@@ -7,7 +8,7 @@ const uri = "mongodb+srv://tanvirasakib:28Jt9DQd8CyIXrWl@cluster0.zgi0iwz.mongod
 const client = new MongoClient(uri);
 
 
-router.get('/', async (req, res, next) => {
+router.get('/', authMiddleware, async (req, res, next) => {
     try {
         await client.connect();
         const database = client.db('todo_app');
@@ -19,7 +20,7 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', authMiddleware, async (req, res, next) => {
     const { id } = req.params;
     try {
         await client.connect();
@@ -34,7 +35,7 @@ router.get('/:id', async (req, res, next) => {
     }   
 });
 
-router.post('/', async (req, res, next) => {
+router.post('/', authMiddleware, async (req, res, next) => {
     const { title, description, category, date, priority, status } = req.body;
     try {
         await client.connect();
@@ -56,7 +57,7 @@ router.post('/', async (req, res, next) => {
       }
 });
 
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:id', authMiddleware, async (req, res, next) => {
     const { id: taskIdToDelete } = req.params;
     try {
         await client.connect();
@@ -70,7 +71,7 @@ router.delete('/:id', async (req, res, next) => {
     }
 });
 
-router.put('/:id', async (req, res, next) => {
+router.put('/:id',authMiddleware, async (req, res, next) => {
     const { id } = req.params;
     try {
         await client.connect();
