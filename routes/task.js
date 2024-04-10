@@ -36,7 +36,7 @@ router.get('/:id', authMiddleware, async (req, res, next) => {
 });
 
 router.post('/', authMiddleware, async (req, res, next) => {
-    const { title, description, category, date, priority, status } = req.body;
+    const { title, assignTo, description, category, date, priority, status } = req.body;
     try {
         await client.connect();
         const database = client.db('todo_app');
@@ -44,6 +44,7 @@ router.post('/', authMiddleware, async (req, res, next) => {
         
         const task = await taskCollection.insertOne({
             title,
+            assignTo,
             description,
             category,
             date,
